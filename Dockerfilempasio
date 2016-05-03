@@ -172,7 +172,12 @@ RUN make gfortran
 # You can use wget to get the input stack but we 
 # cannot mount the data volume during the building
 # time.
+ADD launch.sh $MPAS_PATH
+ADD runh3d.sh $MPAS_PATH
+ADD machinefile $MPAS_PATH
 
+WORKDIR $MPAS_PATH
+USER root
 # You can also use -v during docker run to mount
 # the data volume 
 
