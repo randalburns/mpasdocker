@@ -1,9 +1,9 @@
 # MPAS
 
-Instructions for running diverge after Randall's instructions at  *Launch a starcluster named h3d*
+Instructions for running diverge after Randall's instructions at  *Launch a starcluster named <cluster>*
 
 ```bash
-$ starcluster start -c h3d <cluster>
+$ starcluster start -c <cluster> <cluster>
 $ starcluster sshmaster <cluster>
 ```
 
@@ -16,7 +16,7 @@ $ git clone https://github.com/guanxyz/MPAS
 $ cd MPAS
 ```
 
-Edit `hostfile` to represent the number of nodes on your `<cluster>`
+Edit `hostfile` to represent the number of nodes on your `<cluster>`. In this case, we use a two-nodes cluster
 Edit `machinefile` to represent the number of nodes *and* processors on your `<cluster>`
 
 This builds your docker, which is one process per node.
@@ -26,5 +26,5 @@ $ mpirun -hostfile hostfile --mca btl_tcp_if_include eth0 ./mpibuild_mpas.sh --v
 
 This runs your simulation in docker, which is *n* processes per node.
 ```bash
-$ mpirun -hostfile hostfile --mca btl_tcp_if_include eth0 ./runmpas.sh --verbose --output-filename=mpirun
+$ mpirun -hostfile hostfile --mca btl_tcp_if_include eth0 ./mpirun_mpas.sh --verbose --output-filename=mpirun
 ```
