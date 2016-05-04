@@ -135,7 +135,7 @@ RUN make install
 #################################################
 # clean
 #################################################
-wORKDIR $MPAS_LIBS_PATH
+WORKDIR $MPAS_LIBS_PATH
 RUN rm -rf netcdf-c-build netcdf-f-build pnetcdf-build
 
 
