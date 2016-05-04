@@ -3,10 +3,9 @@
 # if you are the master node run the code
 if [ $HOSTNAME == 'master' ]; then
 
-echo "Starting h3d on master"
+echo "Starting mpas on master"
 
-# Move build files to nfs shared mount
-chown -R user:user /home/user/LANL/app
+chown -R user:user /home/user/LANL/
 
 # run the code as a user
 su user -c /home/user/LANL/runmpas.sh 

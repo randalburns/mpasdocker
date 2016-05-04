@@ -43,6 +43,7 @@ RUN groupadd -r user && useradd -r -m -g user user
 #RUN cat /root/.ssh/id_rsa.pub >> /home/user/.ssh/authorized_keys
 # Asume that we are using the openmpi now!
 # RUN sed -i 's/Port 22/Port 9222/' /etc/ssh/sshd_config
+RUN mkdir /home/user/.ssh
 COPY id_rsa /home/user/.ssh/
 COPY id_rsa.pub /home/user/.ssh/
 COPY config /home/user/.ssh/
@@ -184,6 +185,7 @@ RUN make gfortran
 ADD launch.sh $MPAS_PATH
 ADD runmpas.sh $MPAS_PATH
 ADD machinefile $MPAS_PATH
+#CMD chown user:user launch.sh && chown user:user runmpas.sh && chown user:user machinefile
 
 WORKDIR $MPAS_PATH
 USER root

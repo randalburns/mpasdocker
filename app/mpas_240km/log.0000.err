@@ -170,37 +170,3 @@ Parsing run-time I/O configuration from streams.ocean_forward ...
 Reading dimensions from input streams ...
   
    *** unable to open input file init.nc for stream 'input'
-  
- ----- reading dimensions from stream 'restart' using file restarts/restart.0010-01-01_00.00.00.nc
-                     nCells =    1794
-                     nEdges =    5754
-                  nVertices =    3945
-                        TWO =       2
-                   maxEdges =      10
-                  maxEdges2 =      20
-               vertexDegree =       3
-                nVertLevels =      40
-  
- ----- done reading dimensions from input streams -----
-  
-  
-Assigning remaining dimensions from definitions in Registry.xml ...
-            nAdvectionCells =      20
-                         R3 =       3
-                        SIX =       6
-                    FIFTEEN =      15
-                  TWENTYONE =      21
-              nVertLevelsP1 =      41
-             nZonalMeanBins =     180
-           nZonalMeanBinsP1 =     181
-  
- ----- done assigning dimensions from Registry.xml -----
-  
-  
- Initial time 0010-01-01_00:00:00
-MPAS I/O: Truncating existing data in output file analysis_members/globalStats.0010-01-01_00.00.00.nc
-MPAS I/O: Truncating existing data in output file output/output.0010-01-01_00.00.00.nc
- Doing timestep 0010-01-01_00:40:00
- Doing timestep 0010-01-01_01:20:00
- Doing timestep 0010-01-01_02:00:00
- Doing timestep 0010-01-01_02:40:00
