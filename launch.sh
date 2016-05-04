@@ -6,11 +6,10 @@ if [ $HOSTNAME == 'master' ]; then
 echo "Starting h3d on master"
 
 # Move build files to nfs shared mount
-cp -r /home/mpas/* /mnt/mpas
-chown -R user:user /mnt/mpas/* 
+chown -R user:user /home/user/LANL/app
 
-# run the code as h3d user
-su user -c /home/mpas/runmpas.sh 
+# run the code as a user
+su user -c /home/user/LANL/runmpas.sh 
 
 # All slave nodes launch the ssh server
 else

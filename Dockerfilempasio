@@ -40,10 +40,19 @@ RUN groupadd -r user && useradd -r -m -g user user
 #COPY  ~/.ssh/id_rsa.pub  /home/user/.ssh/
 #RUN cat /home/user/.ssh/id_rsa.pub >> /home/user/.ssh/authorized_keys
 #RUN chown -R user:user /home/user/.ssh; chmod 0700 -R /home/user/.ssh
-
+#RUN cat /root/.ssh/id_rsa.pub >> /home/user/.ssh/authorized_keys
 # Asume that we are using the openmpi now!
 # RUN sed -i 's/Port 22/Port 9222/' /etc/ssh/sshd_config
+COPY id_rsa /home/user/.ssh/
+COPY id_rsa.pub /home/user/.ssh/
+COPY config /home/user/.ssh/
+RUN chown -R user:user /home/user/.ssh; chmod 0700 /home/user/.ssh; chmod 0600 /home/user/.ssh/*
+RUN sed -i 's/Port 22/Port 9222/' /etc/ssh/sshd_config
 
+# add no password login
+RUN cat /home/user/.ssh/id_rsa.pub >> /home/user/.ssh/authorized_keys
+
+RUN chown -R user:user /home/user
 ##################################################
 # Build the directories
 ##################################################
