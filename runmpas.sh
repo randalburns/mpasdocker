@@ -1,2 +1,2 @@
 #/bin/bash
-mpiexec -machinefile machinefile /home/user/LANL/app/mpas_240km/ocean_forward_model
+mpiexec -machinefile machinefile /home/user/LANL/libs/MPAS/MPAS-Release/ocean_forward_model
