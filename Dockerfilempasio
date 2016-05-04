@@ -173,7 +173,7 @@ RUN make gfortran
 # cannot mount the data volume during the building
 # time.
 ADD launch.sh $MPAS_PATH
-ADD runh3d.sh $MPAS_PATH
+ADD runmpas.sh $MPAS_PATH
 ADD machinefile $MPAS_PATH
 
 WORKDIR $MPAS_PATH
