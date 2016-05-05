@@ -22,6 +22,7 @@ This builds your docker, which is one process per node.
 ```bash
 $ mpirun -hostfile hostfile --mca btl_tcp_if_include eth0 ./mpibuild_mpas.sh --verbose --output-filename=mpibuild
 ```
+Note :The directory specified in mpibuild_mpas.sh should be the same as the directory where you clone this repo.
 
 This runs your simulation in docker, which is *n* processes per node.
 ```bash
