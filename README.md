@@ -11,7 +11,7 @@ Now you are on the cluster on AWS. Next is to clone the mpasdocker git repositor
 It is very important that you have to clone the mapsdocker git repository to the local directory where the shared data volume is mounted.
 ```bash
 $ cd /home/mpas
-$ git clone https://github.com/guanxyz/MPAS
+$ git clone https://github.com/randalburns/mpasdocker.git
 $ cd MPAS
 ```
 
