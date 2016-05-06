@@ -1,2 +1,8 @@
-master:2
-node001:2
+master:8
+node001:8
+node002:8
+node003:8
+node004:8
+node005:8
+node006:8
+node007:8

@@ -1,2 +1,7 @@
-master slots=1
 node001 slots=1
+node002 slots=1
+node003 slots=1
+node004 slots=1
+node005 slots=1
+node006 slots=1
+node007 slots=1
