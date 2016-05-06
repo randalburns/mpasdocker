@@ -7,7 +7,7 @@
 
 <immutable_stream name="input"
                   type="input"
-                  filename_template="init.nc"
+                  filename_template="grid.nc"
                   input_interval="initial_only"/>
 
 <immutable_stream name="restart"
@@ -25,7 +25,7 @@
         filename_interval="01-00-00_00:00:00"
         reference_time="0000-01-01_00:00:00"
         clobber_mode="truncate"
-        output_interval="00-01-00_00:00:00">
+        output_interval="00-00-01_00:00:00">
 
     <stream name="mesh"/>
     <stream name="real_world"/>
@@ -278,18 +278,6 @@
     <var name="binBoundaryZonalMean"/>
     <var name="velocityZonalZonalMean"/>
     <var name="velocityMeridionalZonalMean"/>
-
-</stream>
-
-<stream name="paraview_catalystOutput"
-        type="output"
-        filename_template="analysis_members/paraview_catalyst.$Y-$M-$D.nc"
-        filename_interval="01-00-00_00:00:00"
-        packages="paraview_catalyst"
-        clobber_mode="truncate"
-        output_interval="0000-00-07_00:00:00">
-
-    <var name="xtime"/>
 
 </stream>
 

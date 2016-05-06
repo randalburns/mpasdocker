@@ -8,7 +8,7 @@ echo "Starting mpas on master"
 chown -R user:user /home/user/LANL/
 
 # run the code as a user
-su user -c /home/user/LANL/runmpas.sh 
+#su user -c /home/user/LANL/runmpas.sh 
 
 # All slave nodes launch the ssh server
 else
