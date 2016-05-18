@@ -30,9 +30,9 @@ RUN echo "export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH""  >> ~/.bashrc
 RUN echo "export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"">> ~/.bashrc
 
 ##################################################
-# Add active user  (user:user)
+# Add active user "mpas"  (mpas:mpas)
 ##################################################
-RUN groupadd -r user && useradd -r -m -g user user
+RUN groupadd -r mpas && useradd -r -m -g mpas mpas
 
 ##################################################
 # TO-DO :Configure the No-Password SSH in docker
@@ -43,33 +43,33 @@ RUN groupadd -r user && useradd -r -m -g user user
 #RUN cat /root/.ssh/id_rsa.pub >> /home/user/.ssh/authorized_keys
 # Asume that we are using the openmpi now!
 # RUN sed -i 's/Port 22/Port 9222/' /etc/ssh/sshd_config
-COPY id_rsa /home/user/.ssh/
-COPY id_rsa.pub /home/user/.ssh/
-COPY config /home/user/.ssh/
-RUN chown -R user:user /home/user/.ssh; chmod 0700 /home/user/.ssh; chmod 0600 /home/user/.ssh/*
+COPY id_rsa /home/mpas/.ssh/
+COPY id_rsa.pub /home/mpas/.ssh/
+COPY config /home/mpas/.ssh/
+RUN chown -R mpas:mpas /home/mpas/.ssh; chmod 0700 /home/mpas/.ssh; chmod 0600 /home/mpas/.ssh/*
 RUN sed -i 's/Port 22/Port 9222/' /etc/ssh/sshd_config
 
 # add no password login
-RUN cat /home/user/.ssh/id_rsa.pub >> /home/user/.ssh/authorized_keys
+RUN cat /home/mpas/.ssh/id_rsa.pub >> /home/mpas/.ssh/authorized_keys
 
-RUN chown -R user:user /home/user
+RUN chown -R mpas:mpas /home/mpas
 ##################################################
 # Build the directories
 ##################################################
-USER user
-WORKDIR /home/user
+USER mpas
+WORKDIR /home/mpas
 RUN mkdir LANL LANL/libs LANL/MPAS LANL/temp
 RUN mkdir LANL/libs/netcdf LANL/libs/pnetcdf LANL/libs/pio
 RUN mkdir LANL/libs/pio/lib LANL/libs/pio/include
-RUN chmod -R ug+rw /home/user/LANL
+RUN chmod -R ug+rw /home/mpas/LANL
 
 #################################################
 # Setup environment
 ##################################################
 # For the paths
 ##################
-ENV MPAS_PATH /home/user/LANL
-ENV MPAS_LIBS_PATH /home/user/LANL/libs
+ENV MPAS_PATH /home/mpas/LANL
+ENV MPAS_LIBS_PATH /home/mpas/LANL/libs
 ENV IO_DEST $MPAS_LIBS_PATH/io
 ENV NETCDF_C_SOURCE $MPAS_LIBS_PATH/netcdf-4.3.2
 ENV NETCDF_F_SOURCE $MPAS_LIBS_PATH/netcdf-fortran-4.4.1
@@ -182,7 +182,8 @@ RUN make gfortran
 # cannot mount the data volume during the building
 # time.
 ADD launch.sh $MPAS_PATH
-ADD runmpas.sh $MPAS_PATH
+ADD launch_sshd.sh $MPAS_PATH
+ADD dockerrunmpas.sh $MPAS_PATH
 ADD machinefile $MPAS_PATH
 #CMD chown user:user launch.sh && chown user:user runmpas.sh && chown user:user machinefile
 
